@@ -1,0 +1,15 @@
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\bin\Debug\net7.0\planning.EntitiesContext.deps.json
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\bin\Debug\net7.0\planning.EntitiesContext.dll
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\bin\Debug\net7.0\planning.EntitiesContext.pdb
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\bin\Debug\net7.0\planning.Entities.dll
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\bin\Debug\net7.0\planning.Entities.pdb
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\planning.EntitiesContext.csproj.AssemblyReference.cache
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\planning.EntitiesContext.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\planning.EntitiesContext.AssemblyInfoInputs.cache
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\planning.EntitiesContext.AssemblyInfo.cs
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\planning.EntitiesContext.csproj.CoreCompileInputs.cache
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\planning.EntitiesContext.csproj.CopyComplete
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\planning.EntitiesContext.dll
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\refint\planning.EntitiesContext.dll
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\planning.EntitiesContext.pdb
+C:\Users\colin\Documents\planning\planning\planning.EntitiesContext\obj\Debug\net7.0\ref\planning.EntitiesContext.dll
