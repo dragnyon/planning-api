@@ -4,7 +4,7 @@ using planning.Repository.Contracts;
 
 namespace planning.Repository;
 
-public class UserRepository : IRepository<User>
+public class UserRepository
 {
     private readonly PlanningDbContext _context;
 
