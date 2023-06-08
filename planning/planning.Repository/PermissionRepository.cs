@@ -1,4 +1,4 @@
-using planning.Entities;
+using planning.Entities.Entities;
 using planning.EntitiesContext;
 using planning.Repository.Contracts;
 

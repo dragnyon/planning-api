@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using planning.Entities;
+using planning.Entities.Entities;
 using planning.EntitiesContext;
 using planning.Repository.Contracts;
 
@@ -10,7 +10,7 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
 {
     protected readonly PlanningDbContext _context;
     protected readonly DbSet<TEntity> _dbSet;
-    public BaseRepository(PlanningDbContext context)
+    protected BaseRepository(PlanningDbContext context)
     {
         _context = context;
         _dbSet = context.Set<TEntity>();

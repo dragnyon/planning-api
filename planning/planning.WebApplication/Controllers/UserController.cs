@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using planning.Entities;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using planning.Entities.DTOs;
+using planning.Entities.Entities;
+using planning.Entities.Wrappers;
 using planning.EntitiesContext;
 using planning.Repository.Contracts;
+using planning.Services.Contracts;
 
 namespace planning.WebApplication.Controllers;
 
@@ -9,23 +13,31 @@ namespace planning.WebApplication.Controllers;
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
-    private readonly IRepository<User> _userRepository;
+    private readonly IUserService _userService;
+    
+    private readonly IMapper _mapper;
 
-    public UserController(IRepository<User> userRepository)
+    public UserController(IUserService userService, IMapper mapper)
     {
-        _userRepository = userRepository;
+        _userService = userService;
+        _mapper = mapper;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var users = await _userService.GetAll();
+        var usersWrapped = _mapper.Map<IList<UserWrapper>>(users); 
+        
+        return Ok(usersWrapped);
     }
     
-    [HttpGet("")]
-    public IActionResult Get()
+    [HttpPost]
+    public async Task<IActionResult> Create(UserDto user)
     {
-        return Ok(_userRepository.GetAll());
-    }
-    
-    [HttpPost("{username}")]
-    public IActionResult Create(string username)
-    {
-        _userRepository.Create(new User() { Name = username });
+        var userEntity = _mapper.Map<User>(user);
+        await _userService.Create(userEntity);
+        
         return Ok();
     }
 }

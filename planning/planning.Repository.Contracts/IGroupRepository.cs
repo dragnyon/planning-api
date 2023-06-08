@@ -1,4 +1,4 @@
-﻿using planning.Entities;
+﻿using planning.Entities.Entities;
 
 namespace planning.Repository.Contracts;
 

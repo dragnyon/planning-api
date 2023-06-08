@@ -1,7 +1,6 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace planning.Entities;
+namespace planning.Entities.Entities;
 
 [Table(nameof(Group))]
 public class Group : BaseEntity

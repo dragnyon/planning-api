@@ -4,15 +4,11 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>planning.Entities</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Bogus" Version="34.0.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\planning.Models\planning.Models.csproj" />
     </ItemGroup>
 
 </Project>
