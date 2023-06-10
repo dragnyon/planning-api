@@ -230,4 +230,8 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# SQLite database files
 Database.db
+Database.db-shm
+Database.db-wal
