@@ -1,6 +1,6 @@
 ﻿using Bogus;
 using Microsoft.EntityFrameworkCore;
-using planning.Entities;
+using planning.Entities.Entities;
 
 namespace planning.EntitiesContext;
 

@@ -1,10 +1,10 @@
-using planning.Entities;
+using planning.Entities.Entities;
 using planning.EntitiesContext;
 using planning.Repository.Contracts;
 
 namespace planning.Repository;
 
-public class PermissionRepository : IRepository<Permission>
+public class PermissionRepository
 {
     private readonly PlanningDbContext _context;
     public PermissionRepository(PlanningDbContext context)

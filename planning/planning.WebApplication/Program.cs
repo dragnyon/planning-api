@@ -1,23 +1,21 @@
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using planning.Entities;
 using planning.EntitiesContext;
 using planning.Repository;
 using planning.Repository.Contracts;
+using planning.WebApplication.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Configure();
 // Add services to the container.
-
+builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<PlanningDbContext>(options =>
 {
     //options.UseNpgsql(builder.Configuration.GetConnectionString("postgresql"));
     options.UseSqlite(builder.Configuration.GetConnectionString("sqlite"));
 });
-
-builder.Services.AddScoped<IRepository<User>, UserRepository>();
 
 var app = builder.Build();
 
@@ -28,6 +26,12 @@ context.Database.EnsureCreated();
 context.Database.EnsureDeleted();
 context.Database.EnsureCreated();
 
+app.UseSwagger();
+app.UseSwaggerUI(options =>
+{
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+    options.RoutePrefix = string.Empty;
+});
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
