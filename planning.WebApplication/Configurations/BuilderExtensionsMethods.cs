@@ -1,7 +1,4 @@
-using System.Reflection;
 using AutoMapper;
-using planning.Attributes;
-using planning.Entities.Entities;
 using planning.Repository;
 using planning.Repository.Contracts;
 using planning.Services;
@@ -18,30 +15,29 @@ public static class BuilderExtensionsMethods
         builder.Services.ConfigureMapper();
         builder.Services.ConfigureCors();
     }
-    
+
     private static void ConfigureRepositories(this IServiceCollection services)
     {
         services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IGroupRepository, GroupRepository>();
     }
-    
+
     private static void ConfigureServices(this IServiceCollection services)
     {
         services.AddScoped<IUserService, UserService>();
+        services.AddScoped<IGroupService, GroupService>();
     }
-    
+
     private static void ConfigureMapper(this IServiceCollection services)
     {
-        var mapperConfig = new MapperConfiguration(mc =>
-        {
-            mc.AddProfile(new MapperInitializer());
-        });
+        var mapperConfig = new MapperConfiguration(mc => { mc.AddProfile(new MapperInitializer()); });
 
         var mapper = mapperConfig.CreateMapper();
         services.AddSingleton(mapper);
     }
-    
+
     private static void ConfigureCors(this IServiceCollection services)
     {
         services.AddCors(options =>

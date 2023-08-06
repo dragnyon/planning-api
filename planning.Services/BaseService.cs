@@ -9,11 +9,12 @@ public class BaseService<TEntity, TRepository> : IBaseService<TEntity, TReposito
     where TRepository : IBaseRepository<TEntity>
 {
     protected readonly TRepository _repository;
+
     protected BaseService(TRepository repository)
     {
         _repository = repository;
     }
-    
+
     public async Task<TEntity> Get(Guid id)
     {
         return await _repository.Get(id);
@@ -30,10 +31,9 @@ public class BaseService<TEntity, TRepository> : IBaseService<TEntity, TReposito
         await _repository.Save();
     }
 
-    public async void Update(TEntity entity)
+    public void Update(TEntity entity)
     {
-       _repository.Update(entity);
-       await _repository.Save();
+        _repository.Update(entity);
     }
 
     public async Task Delete(Guid id)
