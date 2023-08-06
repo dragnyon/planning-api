@@ -5,6 +5,7 @@
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
@@ -24,5 +25,11 @@
       <ProjectReference Include="..\planning.Repository\planning.Repository.csproj" />
       <ProjectReference Include="..\planning.Services.Contracts\planning.Services.Contracts.csproj" />
       <ProjectReference Include="..\planning.Services\planning.Services.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 </Project>
