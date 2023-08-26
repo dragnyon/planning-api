@@ -1,0 +1,28 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Allow Docker Insecure Registry
+      run: |
+        sudo mkdir -p /etc/docker
+        echo "{ \"insecure-registries\" : [\"${{ vars.SERVER_HOST }}:${{ vars.DOCKER_REGISTRY_PORT }}\"] }" | sudo tee /etc/docker/daemon.json
+        sudo service docker restart
+
+    - name: Login to Private Docker Registry
+      run: docker login ${{ vars.SERVER_HOST }}:${{ vars.DOCKER_REGISTRY_PORT }} -u ${{ vars.DOCKER_REGISTRY_LOGIN }} -p ${{ secrets.DOCKER_REGISTRY_SECRET}}
+
+    - name: Build and push Docker image
+      run: |
+        docker build -t ${{ vars.SERVER_HOST }}:${{ vars.DOCKER_REGISTRY_PORT }}/dc-soft/${{ vars.DOCKER_IMAGE_NAME }}:develop .
+        docker push ${{ vars.SERVER_HOST }}:${{ vars.DOCKER_REGISTRY_PORT }}/dc-soft/${{ vars.DOCKER_IMAGE_NAME }}:develop
+
