@@ -6,4 +6,5 @@ namespace planning.Services.Contracts;
 public interface IUserService : IBaseService<User, IUserRepository>
 {
     Task AddGroup(Guid userId, Guid groupId);
+    Task DeleteGroup(Guid userId, Guid groupId);
 }

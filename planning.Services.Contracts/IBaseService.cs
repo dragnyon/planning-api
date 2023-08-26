@@ -8,9 +8,9 @@ public interface IBaseService<TEntity, TRepository>
     where TEntity : BaseEntity
     where TRepository : IBaseRepository<TEntity>
 {
-    Task<TEntity> Get(Guid id, params Expression<Func<TEntity, object>>[] includeProperties);
+    Task<TEntity> Get(Guid id);
     
-    Task<IList<TEntity>> GetAll(params Expression<Func<TEntity, object>>[] includeProperties);
+    Task<IList<TEntity>> GetAll();
     
     Task Create(TEntity entity);
     

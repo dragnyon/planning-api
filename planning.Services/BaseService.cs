@@ -9,21 +9,23 @@ public class BaseService<TEntity, TRepository> : IBaseService<TEntity, TReposito
     where TEntity : BaseEntity
     where TRepository : IBaseRepository<TEntity>
 {
-    protected readonly TRepository _repository;
+    private readonly TRepository _repository;
+    private readonly List<Expression<Func<TEntity, object>>> _includes;
 
-    protected BaseService(TRepository repository)
+    protected BaseService(TRepository repository, List<Expression<Func<TEntity, object>>> includes)
     {
         _repository = repository;
+        _includes = includes;
     }
 
-    public async Task<TEntity> Get(Guid id, params Expression<Func<TEntity, object>>[] includeProperties)
+    public async Task<TEntity> Get(Guid id)
     {
-        return await _repository.Get(id, includeProperties);
+        return await _repository.Get(id, _includes.ToArray());
     }
 
-    public async Task<IList<TEntity>> GetAll(params Expression<Func<TEntity, object>>[] includeProperties)
+    public async Task<IList<TEntity>> GetAll()
     {
-        return await _repository.GetAll(includeProperties);
+        return await _repository.GetAll(_includes.ToArray());
     }
 
     public async Task Create(TEntity entity)

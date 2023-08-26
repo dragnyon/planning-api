@@ -14,20 +14,18 @@ public class UserController : ControllerBase
 {
     private readonly IMapper _mapper;
     private readonly IUserService _userService;
-    private List<Expression<Func<User, object>>> Includes { get; set; } = new();
 
     public UserController(IUserService userService, IMapper mapper)
     {
         _userService = userService;
         _mapper = mapper;
-        Includes.Add(x => x.Groups);
     }
     
     [HttpGet]
     [Route("{userId}")]
     public async Task<IActionResult> Get(Guid userId)
     {
-        var user = await _userService.Get(userId, Includes.ToArray());
+        var user = await _userService.Get(userId);
         var userWrapped = _mapper.Map<UserWrapper>(user);
 
         return Ok(userWrapped);
@@ -36,7 +34,7 @@ public class UserController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var users = await _userService.GetAll(Includes.ToArray());
+        var users = await _userService.GetAll();
         var usersWrapped = _mapper.Map<IList<UserWrapper>>(users);
 
         return Ok(usersWrapped);
@@ -56,5 +54,12 @@ public class UserController : ControllerBase
     public async Task AddGroup(Guid userId, Guid groupId)
     {
         await _userService.AddGroup(userId, groupId);
+    }
+
+    [HttpPost]
+    [Route("{userId}/deleteGroup/{groupId}")]
+    public async Task DeleteGroup(Guid userId, Guid groupId)
+    {
+        await _userService.DeleteGroup(userId, groupId);
     }
 }
