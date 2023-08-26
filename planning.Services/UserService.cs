@@ -6,21 +6,20 @@ namespace planning.Services;
 
 public class UserService : BaseService<User, IUserRepository>, IUserService
 {
-    private readonly IGroupRepository _groupRepository;
+    private readonly IGroupService _groupService;
 
-    public UserService(IUserRepository repository, IGroupRepository groupRepository) : base(repository)
+    public UserService(IUserRepository repository, IGroupService groupService) : base(repository)
     {
-        _groupRepository = groupRepository;
+        _groupService = groupService;
     }
 
     public async Task AddGroup(Guid userId, Guid groupId)
     {
-        var user = await _repository.Get(userId);
-        var group = await _groupRepository.Get(groupId);
+        var user = await Get(userId);
+        var group = await _groupService.Get(groupId);
         user.Groups.Add(group);
         group.Users.Add(user);
-        _repository.Update(user);
-        _groupRepository.Update(group);
-        await _repository.Save();
+        await Update(user);
+        await _groupService.Update(group);
     }
 }

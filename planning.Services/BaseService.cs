@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using planning.Entities.Entities;
 using planning.Repository.Contracts;
 using planning.Services.Contracts;
@@ -15,14 +16,14 @@ public class BaseService<TEntity, TRepository> : IBaseService<TEntity, TReposito
         _repository = repository;
     }
 
-    public async Task<TEntity> Get(Guid id)
+    public async Task<TEntity> Get(Guid id, params Expression<Func<TEntity, object>>[] includeProperties)
     {
-        return await _repository.Get(id);
+        return await _repository.Get(id, includeProperties);
     }
 
-    public async Task<IList<TEntity>> GetAll()
+    public async Task<IList<TEntity>> GetAll(params Expression<Func<TEntity, object>>[] includeProperties)
     {
-        return await _repository.GetAll();
+        return await _repository.GetAll(includeProperties);
     }
 
     public async Task Create(TEntity entity)
@@ -31,9 +32,10 @@ public class BaseService<TEntity, TRepository> : IBaseService<TEntity, TReposito
         await _repository.Save();
     }
 
-    public void Update(TEntity entity)
+    public async Task Update(TEntity entity)
     {
         _repository.Update(entity);
+        await _repository.Save();
     }
 
     public async Task Delete(Guid id)
