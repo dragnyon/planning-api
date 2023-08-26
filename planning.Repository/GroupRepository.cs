@@ -5,11 +5,14 @@ using planning.Repository.Contracts;
 
 namespace planning.Repository;
 
-[RepositoryImplementation]
+
 public class GroupRepository : BaseRepository<Group>, IGroupRepository
 {
     public GroupRepository(PlanningDbContext context)
         : base(context)
     {
     }
+    
+    
+    
 }
