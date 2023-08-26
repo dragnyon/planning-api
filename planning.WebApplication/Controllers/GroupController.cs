@@ -22,6 +22,20 @@ public class GroupController : ControllerBase
     }
 
     [HttpGet]
+    [Route("{groupId}")]
+    public async Task<IActionResult> Get(Guid groupId)
+    {
+        var group = await _groupService.Get(groupId);
+        var groupWrapped = _mapper.Map<GroupWrapper>(group);
+
+        return Ok(groupWrapped);
+    }
+    
+    
+    
+    
+    
+    [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var groups = await _groupService.GetAll();
@@ -38,5 +52,14 @@ public class GroupController : ControllerBase
         await _groupService.Create(groupEntity);
 
         return Ok();
+    }
+    
+    [HttpPut]
+    [Route("{groupId}")]
+    public async Task Update(Guid groupId, GroupDto group)
+    {
+        var groupEntity = _mapper.Map<Group>(group);
+        groupEntity.Id = groupId;
+        await _groupService.Update(groupEntity);
     }
 }

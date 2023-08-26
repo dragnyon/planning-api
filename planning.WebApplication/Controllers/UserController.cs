@@ -62,4 +62,14 @@ public class UserController : ControllerBase
     {
         await _userService.DeleteGroup(userId, groupId);
     }
+
+    [HttpPut]
+    [Route("{userId}")]
+    public async Task Update(Guid userId, UserDto user)
+    {
+        var userEntity = _mapper.Map<User>(user);
+        userEntity.Id = userId;
+        await _userService.Update(userEntity);
+    }
+    
 }
