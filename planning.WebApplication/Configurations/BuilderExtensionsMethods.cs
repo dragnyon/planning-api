@@ -22,12 +22,14 @@ public static class BuilderExtensionsMethods
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IGroupRepository, GroupRepository>();
+        services.AddScoped<IActivityRepository, ActivityRepository>();
     }
 
     private static void ConfigureServices(this IServiceCollection services)
     {
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IGroupService, GroupService>();
+        services.AddScoped<IActivityService, ActivityService>();
     }
 
     private static void ConfigureMapper(this IServiceCollection services)
