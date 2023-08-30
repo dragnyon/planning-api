@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using planning.Entities.Entities;
 using planning.Repository.Contracts;
 
@@ -13,7 +14,7 @@ public interface IBaseService<TEntity, TRepository>
     
     Task Create(TEntity entity);
     
-    void Update(TEntity entity);
+    Task Update(TEntity entity);
     
     Task Delete(Guid id);
 }

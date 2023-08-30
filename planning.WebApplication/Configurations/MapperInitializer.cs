@@ -11,5 +11,13 @@ public class MapperInitializer : Profile
     {
         CreateMap<User, UserWrapper>();
         CreateMap<UserDto, User>();
+        CreateMap<Group, GroupWrapper>();
+        CreateMap<GroupDto, Group>();
+        CreateMap<ActivityDto, Activity>();
+        CreateMap<Activity, ActivityWrapper>();
+        CreateMap<RessourceDto, Ressource>();
+        CreateMap<Ressource, RessourceWrapper>();
+        CreateMap<EnseignantDto, Enseignant>();
+        CreateMap<Enseignant, EnseignantWrapper>();
     }
 }

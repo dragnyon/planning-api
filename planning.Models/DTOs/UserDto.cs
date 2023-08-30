@@ -1,6 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace planning.Entities.DTOs;
 
 public class UserDto
 {
-    public string Name { get; set; } = default!;
+    [Required] [MinLength(1)] public string LastName { get; set; } = default!;
+
+    [Required] [MinLength(1)] public string FirstName { get; set; } = default!;
 }

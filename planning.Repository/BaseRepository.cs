@@ -16,16 +16,30 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
         _dbSet = context.Set<TEntity>();
     }
 
-    public async Task<TEntity> Get(Guid id)
+    public async Task<TEntity> Get(Guid id, params Expression<Func<TEntity, object>>[] includeProperties)
     {
-        return await _dbSet.FirstOrDefaultAsync( x => x.Id == id );
+        IQueryable<TEntity> query = _dbSet;
+
+        foreach (var includeProperty in includeProperties)
+        {
+            query = query.Include(includeProperty);
+        }
+
+        return await query.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<IList<TEntity>> GetAll()
+    public async Task<IList<TEntity>> GetAll(params Expression<Func<TEntity, object>>[] includeProperties)
     {
-        return await _dbSet.ToListAsync();
-    }
+        IQueryable<TEntity> query = _dbSet;
 
+        foreach (var includeProperty in includeProperties)
+        {
+            query = query.Include(includeProperty);
+        }
+
+        return await query.ToListAsync();
+    }
+    
     public async Task Create(TEntity entity)
     {
         await _dbSet.AddAsync(entity);

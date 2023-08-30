@@ -10,4 +10,8 @@
       <ProjectReference Include="..\planning.Models\planning.Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.10" />
+    </ItemGroup>
+
 </Project>

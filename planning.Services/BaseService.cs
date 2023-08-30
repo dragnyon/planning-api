@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using planning.Entities.Entities;
 using planning.Repository.Contracts;
 using planning.Services.Contracts;
@@ -8,20 +9,23 @@ public class BaseService<TEntity, TRepository> : IBaseService<TEntity, TReposito
     where TEntity : BaseEntity
     where TRepository : IBaseRepository<TEntity>
 {
-    protected readonly TRepository _repository;
-    protected BaseService(TRepository repository)
+    private readonly TRepository _repository;
+    private readonly List<Expression<Func<TEntity, object>>> _includes;
+
+    protected BaseService(TRepository repository, List<Expression<Func<TEntity, object>>> includes)
     {
         _repository = repository;
+        _includes = includes;
     }
-    
+
     public async Task<TEntity> Get(Guid id)
     {
-        return await _repository.Get(id);
+        return await _repository.Get(id, _includes.ToArray());
     }
 
     public async Task<IList<TEntity>> GetAll()
     {
-        return await _repository.GetAll();
+        return await _repository.GetAll(_includes.ToArray());
     }
 
     public async Task Create(TEntity entity)
@@ -30,10 +34,10 @@ public class BaseService<TEntity, TRepository> : IBaseService<TEntity, TReposito
         await _repository.Save();
     }
 
-    public async void Update(TEntity entity)
+    public async Task Update(TEntity entity)
     {
-       _repository.Update(entity);
-       await _repository.Save();
+        _repository.Update(entity);
+        await _repository.Save();
     }
 
     public async Task Delete(Guid id)
