@@ -23,6 +23,9 @@ public static class BuilderExtensionsMethods
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IGroupRepository, GroupRepository>();
         services.AddScoped<IActivityRepository, ActivityRepository>();
+        services.AddScoped<IRessourceRepository, RessourceRepository>();
+        services.AddScoped<IEnseignantRepository, EnseignantRepository>();
+        
     }
 
     private static void ConfigureServices(this IServiceCollection services)
@@ -30,6 +33,10 @@ public static class BuilderExtensionsMethods
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IGroupService, GroupService>();
         services.AddScoped<IActivityService, ActivityService>();
+        services.AddScoped<IRessourceService, RessourceService>();
+        services.AddScoped<IEnseignantService, EnseignantService>();
+        
+       
     }
 
     private static void ConfigureMapper(this IServiceCollection services)

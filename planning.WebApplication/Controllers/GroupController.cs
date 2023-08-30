@@ -31,10 +31,6 @@ public class GroupController : ControllerBase
         return Ok(groupWrapped);
     }
     
-    
-    
-    
-    
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {

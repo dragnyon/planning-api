@@ -10,5 +10,6 @@ public class Activity : BaseEntity
     [Column("Name")]
     public string Name { get; set; } = default!;
     
+    
     public List<User> Users { get; set; } = default!;
 }

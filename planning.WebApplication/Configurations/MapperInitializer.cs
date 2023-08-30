@@ -15,5 +15,9 @@ public class MapperInitializer : Profile
         CreateMap<GroupDto, Group>();
         CreateMap<ActivityDto, Activity>();
         CreateMap<Activity, ActivityWrapper>();
+        CreateMap<RessourceDto, Ressource>();
+        CreateMap<Ressource, RessourceWrapper>();
+        CreateMap<EnseignantDto, Enseignant>();
+        CreateMap<Enseignant, EnseignantWrapper>();
     }
 }
