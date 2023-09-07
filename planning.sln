@@ -1,5 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "planning.WebApplication", "planning.WebApplication\planning.WebApplication.csproj", "{13F5117D-D8EF-442A-B297-66825D767177}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "planning.Models", "planning.Models\planning.Models.csproj", "{49D8BB62-3E47-4D45-B2AC-ED7BF469C9C1}"
@@ -17,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "planning.Attributes", "planning.Attributes\planning.Attributes.csproj", "{D2A033AD-94F7-49FA-9FF0-BAB5FBF37723}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "planning.IntegrationTests", "planning.IntegrationTests\planning.IntegrationTests.csproj", "{08649872-A4D3-4430-B5B2-39B51F7CDA87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "planning.BlazorApp", "planning.BlazorApp\planning.BlazorApp.csproj", "{49A5C871-B24B-4E2E-9A45-19D9CCA4823C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,5 +63,9 @@ Global
 		{08649872-A4D3-4430-B5B2-39B51F7CDA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08649872-A4D3-4430-B5B2-39B51F7CDA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08649872-A4D3-4430-B5B2-39B51F7CDA87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49A5C871-B24B-4E2E-9A45-19D9CCA4823C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A5C871-B24B-4E2E-9A45-19D9CCA4823C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A5C871-B24B-4E2E-9A45-19D9CCA4823C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A5C871-B24B-4E2E-9A45-19D9CCA4823C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

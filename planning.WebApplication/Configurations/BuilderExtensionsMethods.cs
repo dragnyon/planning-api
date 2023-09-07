@@ -13,7 +13,7 @@ public static class BuilderExtensionsMethods
         builder.Services.ConfigureRepositories();
         builder.Services.ConfigureServices();
         builder.Services.ConfigureMapper();
-        builder.Services.ConfigureCors();
+        builder.Services.ConfigureCors(); 
     }
 
     private static void ConfigureRepositories(this IServiceCollection services)
