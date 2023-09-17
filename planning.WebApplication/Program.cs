@@ -8,14 +8,6 @@ using planning.WebApplication.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configure();
-// Add services to the container.
-builder.Services.AddSwaggerGen();
-builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<PlanningDbContext>(options =>
-{
-    //options.UseNpgsql(builder.Configuration.GetConnectionString("postgresql"));
-    options.UseSqlite(builder.Configuration.GetConnectionString("sqlite"));
-});
 
 var app = builder.Build();
 
