@@ -10,5 +10,8 @@ public class User : BaseEntity
     [Column(nameof(FirstName))] public string FirstName { get; set; } = default!;
 
     public List<Activity> Activities { get; set; } = default!;
-    public List<Group> Groups { get; set; } = new();
+    public List<Group> Groups { get; set; } = default!;
+
+    public List<Role> Roles { get; set; } = default!;
+
 }

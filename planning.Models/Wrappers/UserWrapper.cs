@@ -6,4 +6,5 @@ public class UserWrapper
     public string LastName { get; set; } = default!;
     public string FirstName { get; set; } = default!;
     public List<GroupWrapper> Groups { get; set; } = default!;
+    
 }
