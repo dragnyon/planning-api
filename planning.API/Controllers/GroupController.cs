@@ -5,7 +5,7 @@ using planning.Entities.Entities;
 using planning.Entities.Wrappers;
 using planning.Services.Contracts;
 
-namespace planning.WebApplication.Controllers;
+namespace planning.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]

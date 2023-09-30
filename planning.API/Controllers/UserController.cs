@@ -1,24 +1,23 @@
 ﻿using System.Linq.Expressions;
 using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using planning.Application.Commands.User.CreateUser;
 using planning.Entities.DTOs;
 using planning.Entities.Entities;
 using planning.Entities.Wrappers;
 using planning.Services.Contracts;
 
-namespace planning.WebApplication.Controllers;
+namespace planning.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
+public class UserController : BaseApiController
 {
-    private readonly IMapper _mapper;
-    private readonly IUserService _userService;
 
-    public UserController(IUserService userService, IMapper mapper)
+    public UserController(IMediator mediator) : base(mediator)
     {
-        _userService = userService;
-        _mapper = mapper;
+
     }
     
     [HttpGet]
@@ -41,12 +40,10 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(UserDto user)
+    public async Task<ActionResult<UserDto>> Create([FromBody] CreateUserCommand command)
     {
-        var userEntity = _mapper.Map<User>(user);
-        await _userService.Create(userEntity);
-
-        return Ok();
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 
     [HttpPost]

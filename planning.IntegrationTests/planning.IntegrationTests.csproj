@@ -22,7 +22,7 @@
       <ProjectReference Include="..\planning.EntitiesContext\planning.EntitiesContext.csproj" />
       <ProjectReference Include="..\planning.Services.Contracts\planning.Services.Contracts.csproj" />
       <ProjectReference Include="..\planning.Services\planning.Services.csproj" />
-      <ProjectReference Include="..\planning.WebApplication\planning.WebApplication.csproj" />
+      <ProjectReference Include="..\planning.API\planning.API.csproj" />
     </ItemGroup>
 
 </Project>

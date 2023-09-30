@@ -11,6 +11,9 @@
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="12.0.1" />
         <PackageReference Include="Bogus" Version="34.0.2" />
+        <PackageReference Include="FluentValidation" Version="11.7.1" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+        <PackageReference Include="MediatR" Version="12.1.1" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.10" />
@@ -20,9 +23,9 @@
     </ItemGroup>
     
     <ItemGroup>
+      <ProjectReference Include="..\planning.Application\planning.Application.csproj" />
       <ProjectReference Include="..\planning.BlazorApp\planning.BlazorApp.csproj" />
       <ProjectReference Include="..\planning.EntitiesContext\planning.EntitiesContext.csproj" />
-      <ProjectReference Include="..\planning.Models\planning.Models.csproj" />
       <ProjectReference Include="..\planning.Repository.Contracts\planning.Repository.Contracts.csproj" />
       <ProjectReference Include="..\planning.Repository\planning.Repository.csproj" />
       <ProjectReference Include="..\planning.Services.Contracts\planning.Services.Contracts.csproj" />
